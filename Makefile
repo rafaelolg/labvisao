@@ -22,11 +22,11 @@ OBJS=$(SRCS:%.cpp=%.o)
 
 #INCLUIR gcc -MM *.cpp
 
-PROGRAM:test
+PROGRAM:similar
 
 all: $(PROGRAM)
 
-test:test.o
+similar:similar.o
 	$(CC) $(LDFLAGS) $< -o $@
 
 
