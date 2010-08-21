@@ -12,9 +12,7 @@ LDFLAGS += `pkg-config opencv --libs`
 
 
 
-CFLAGS += -g  -Wall -Wpointer-arith
-CFLAGS += -Wmissing-declarations
-CFLAGS += -fno-strict-aliasing 
+CFLAGS += -g  -Wall
 CFLAGS += -DNDEBUG
 
 SRCS=$(wildcard *.cpp)
