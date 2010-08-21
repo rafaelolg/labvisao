@@ -3,13 +3,13 @@
 #include "stdio.h"
 
 using namespace std;
-
-
-
-
 using namespace cv;
 
-float histogram_distance(Mat a, Mat  b);
+double histogram_distance(Mat a, Mat  b);
+
+
+
+
 
 int main( int argc, char** argv )
 {
@@ -38,16 +38,22 @@ int main( int argc, char** argv )
 
 
 
-float histogram_distance(Mat a, Mat  b) {
+double histogram_distance(Mat a, Mat  b) {
     MatND  hista, histb;
-    int histsize[] = {256, 256, 256};
-    int channels[] = {0, 1, 2};
-    float range[] = {0, 256};
-    const float * ranges[] = {range,range,range};
+    Mat a_hsv, b_hsv;
+
+
+    int histsize[] = {180, 256};
+    int channels[] = {0, 1};
+    float hrange[] = {0, 180};
+    float srange[] = {0, 256};
+    const float * ranges[] = {hrange,srange};
+
+    cvtColor(a, a_hsv, CV_BGR2HSV);
+    cvtColor(b, b_hsv, CV_BGR2HSV);
 
     calcHist(&a, 1, channels, Mat(), hista, 2, histsize, ranges, true, false);
     calcHist(&b, 3, channels, Mat(), histb, 2, histsize, ranges, true, false);
-    // return compareHist(hista, hista, CV_COMP_BHATTACHARYYA);
     return norm(hista, histb);
 }
 
