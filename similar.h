@@ -18,27 +18,10 @@ bool sort_results(const result_data& left, const result_data& right);
 class DistanceCalculator
 {
     public:
-        DistanceCalculator() {};
-        virtual double calculate(Mat a, Mat b);
+        virtual ~DistanceCalculator() {}
+        virtual double calculate(Mat a,Mat b) = 0;
 };
 
-
-class HistogramDistanceCalculator: public DistanceCalculator
-{
-    public:
-        HistogramDistanceCalculator();
-        double calculate(Mat a, Mat b);
-};
-
-
-class SurfDistanceCalculator: public DistanceCalculator
-{
-    public:
-        SurfDistanceCalculator();
-        double calculate(Mat a, Mat b);
-};
-
-
-vector<result_data> get_distances(string target, vector<string> imgs, DistanceCalculator d);
+vector<result_data> get_distances(string target, vector<string> imgs, DistanceCalculator * d);
 
 #endif
