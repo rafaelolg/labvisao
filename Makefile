@@ -18,7 +18,6 @@ CFLAGS += -DNDEBUG
 SRCS=$(wildcard *.cpp)
 OBJS=$(SRCS:%.cpp=%.o)
 
-#INCLUIR gcc -MM *.cpp
 
 PROGRAM:similar
 
@@ -28,6 +27,7 @@ similar:similar.o
 	$(CC) $(LDFLAGS) $< -o $@
 
 
+similar.o: similar.cpp similar.h
 .cpp.o:
 	$(CC) $(CFLAGS)  -c $< -o $@
 
