@@ -1,0 +1,10 @@
+Simple CBIR project to Computer Vision Lab classes.
+This project uses opencv 2.1.
+
+
+#To Compile
+make
+
+
+#To run
+./similar image.jpg listofimages.txt
