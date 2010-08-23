@@ -21,7 +21,18 @@ class DistanceCalculator
         virtual ~DistanceCalculator() {}
         virtual double calculate(Mat a,Mat b) = 0;
 };
+class HistogramDistanceCalculator : public DistanceCalculator
+{
+    public:
+        virtual double calculate(Mat a,Mat b);
+};
+
+
+class SurfDistanceCalculator : public DistanceCalculator
+{
+    public:
+        virtual double calculate(Mat a,Mat b);
+};
 
 vector<result_data> get_distances(string target, vector<string> imgs, DistanceCalculator * d);
-
 #endif
