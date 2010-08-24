@@ -47,12 +47,16 @@ int main( int argc, char** argv )
     while (file_list >> img_file_name) {
         imgs.push_back(img_file_name);
     }
-    //HistogramDistanceCalculator d;
-    SurfDistanceCalculator d;
+    HistogramDistanceCalculator d;
+    //SurfDistanceCalculator d;
     vector<result_data> distances = get_distances(target_name, imgs, &d);
     for(size_t i = 0; i < distances.size(); i++) {
         cout << i << " - " << distances[i].first << " -- " << distances[i].second << std::endl;
     }
+    for (size_t i = 3; i > 0; i--) {
+        imshow(distances[i].second.c_str(), imread(distances[i].second.c_str()));
+    }
+    cvWaitKey();
     return 0;
 }
 
