@@ -1,3 +1,5 @@
 *.o
 /similar
 *.*~
+/lista.txt
+/udrdomal.jpg
