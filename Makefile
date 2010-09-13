@@ -23,14 +23,14 @@ PROGRAM:similar
 
 all: $(PROGRAM)
 
-similar:similar.o
-	$(CC) $(LDFLAGS) $< -o $@
-
-
 similar.o: similar.cpp similar.h
-.cpp.o:
-	$(CC) $(CFLAGS)  -c $< -o $@
+histogram_similarity.o: histogram_similarity.cpp histogram_similarity.h
 
+similar: $(OBJS)
+	$(CXX) $(LDFLAGS) $(OBJS) -o similar
+
+.cpp.o:
+	$(CXX) $(CFLAGS)  -c $< -o $@
 
 
 package:cleanall

@@ -7,9 +7,28 @@
 #include <iostream>
 #include <vector>
 
-#include "surf.h"
+#include "surf_similarity.h"
 
 using namespace std;
+
+double SurfSimilarityCalculator::calculate(Mat a, Mat b)
+{
+	Mat aGrayscale;
+	Mat bGrayscale;
+
+	// Convert to grayscale
+	cvtColor(a, aGrayscale, CV_BGR2GRAY);
+	cvtColor(b, bGrayscale, CV_BGR2GRAY);
+
+	IplImage aIpl = aGrayscale;
+	IplImage bIpl = bGrayscale;
+
+	double similarity = surf(&aIpl, &bIpl);
+        return similarity;
+}
+
+
+
 
 double compareSURFDescriptors(
 		const float* d1, const float* d2,
@@ -108,5 +127,5 @@ double surf(IplImage* object, IplImage* image){
 	similar += ptpairs.size();
 
 	// Resultado de 0 a 1
-	return 1.0/(similar+1);
+	return similar;
 }

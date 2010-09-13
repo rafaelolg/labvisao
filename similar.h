@@ -15,24 +15,16 @@ typedef pair<double, string> result_data;
 
 bool sort_results(const result_data& left, const result_data& right);
 
-class DistanceCalculator
+class SimilarityCalculator
 {
     public:
-        virtual ~DistanceCalculator() {}
+        virtual ~SimilarityCalculator() {}
         virtual double calculate(Mat a,Mat b) = 0;
 };
-class HistogramDistanceCalculator : public DistanceCalculator
-{
-    public:
-        virtual double calculate(Mat a,Mat b);
-};
 
 
-class SurfDistanceCalculator : public DistanceCalculator
-{
-    public:
-        virtual double calculate(Mat a,Mat b);
-};
+vector < result_data > get_similarities(Mat target_img, vector <Mat> imgs, vector<string> img_names,  SimilarityCalculator * d);
 
-vector<result_data> get_distances(string target, vector<string> imgs, DistanceCalculator * d);
 #endif
+
+
