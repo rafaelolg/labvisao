@@ -23,8 +23,6 @@ class SimilarityCalculator
 };
 
 
-vector < result_data > get_similarities(Mat target_img, vector <Mat> imgs, vector<string> img_names,  SimilarityCalculator * d);
+vector < result_data > get_similarities(Mat target_img, vector <Mat> imgs, vector<string> img_names, SimilarityCalculator * d);
 
 #endif
-
-

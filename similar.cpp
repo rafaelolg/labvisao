@@ -9,6 +9,7 @@
 #include "similar.h"
 #include "surf_similarity.h"
 #include "histogram_similarity.h"
+#include "localized_similarity.h"
 
 using namespace std;
 using namespace cv;
@@ -34,17 +35,18 @@ int main(int argc, char **argv)
     while(file_list >> temp) {
         img_names.push_back(temp);
         imgs.push_back(imread(temp));
-        cout << "loaded" << temp << std::endl;
+        cout << "loaded " << temp << std::endl;
     }
     while(search_list >> temp) {
         target_names.push_back(temp);
         target_imgs.push_back(imread(temp));
-        cout << "loaded" << temp << std::endl;
+        cout << "loaded " << temp << std::endl;
     }
 
 
     //HistogramSimilarityCalculator d;
-    SurfSimilarityCalculator d;
+    //SurfSimilarityCalculator d;
+    LocalizedSimilarityCalculator d;
     for (size_t j = 0; j < target_imgs.size(); j++) {
         Mat target_img = target_imgs[j];
         string target_name = target_names[j];
@@ -52,18 +54,35 @@ int main(int argc, char **argv)
         cout << target_name;
         for(size_t i = 0; i < 10; i++) {
             cout << "\t" << similarities[i].second;
+
+            // Temporary imshow of 10 best results
+            stringstream ss;
+            ss << i+1;
+            ss << ": ";
+            ss << similarities[i].second;
+
+            imshow(ss.str(), imread(similarities[i].second));
+            cvMoveWindow(ss.str().c_str(), 260*(i%5), 260*(i/5));
         }
         cout << std::endl;
+
+        // Show input img
+        imshow(target_name, target_img);
+        cvMoveWindow(target_name.c_str(), 0, 260*2);
+
+        // Destroy all windows and resume the loop, doing a search on the next input
+        waitKey();
+        cvDestroyAllWindows();
     }
-    cvWaitKey();
+    waitKey();
     return 0;
 }
 
 /*
- * Returns a sorted result_data vector with de similarities of the image in
- * target_name image file to the image files in imgs vector.
- * */
-vector < result_data > get_similarities(Mat target_img, vector <Mat> imgs, vector<string> img_names,  SimilarityCalculator * d)
+* Returns a sorted result_data vector with de similarities of the image in
+* target_name image file to the image files in imgs vector.
+* */
+vector < result_data > get_similarities(Mat target_img, vector <Mat> imgs, vector<string> img_names, SimilarityCalculator * d)
 {
     vector < result_data > similarities;
 
@@ -76,8 +95,8 @@ vector < result_data > get_similarities(Mat target_img, vector <Mat> imgs, vecto
 }
 
 /*
- * Sort results in lexical order of similarities.
- */
+* Sort results in lexical order of similarities.
+*/
 bool sort_results(const result_data & left, const result_data & right)
 {
     return left.first > right.first;

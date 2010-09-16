@@ -13,3 +13,4 @@ class SurfSimilarityCalculator : public SimilarityCalculator
 double surf(IplImage* object, IplImage* image);
 
 #endif /* SURF_H_ */
+

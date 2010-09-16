@@ -24,7 +24,7 @@ double SurfSimilarityCalculator::calculate(Mat a, Mat b)
 	IplImage bIpl = bGrayscale;
 
 	double similarity = surf(&aIpl, &bIpl);
-        return similarity;
+	return similarity;
 }
 
 

@@ -23,8 +23,9 @@ double HistogramSimilarityCalculator::calculate(Mat a, Mat b)
     cvtColor(a, a_hsv, CV_BGR2HSV);
     cvtColor(b, b_hsv, CV_BGR2HSV);
 
-    calcHist(&a, 1, channels, Mat(), hista, 2, histsize, ranges, true, false);
-    calcHist(&b, 1, channels, Mat(), histb, 2, histsize, ranges, true, false);
+    calcHist(&a_hsv, 1, channels, Mat(), hista, 2, histsize, ranges, true, false);
+    calcHist(&b_hsv, 1, channels, Mat(), histb, 2, histsize, ranges, true, false);
     double similarity = compareHist(hista, histb, CV_COMP_INTERSECT) /((a.rows-1) * (a.cols-1));
     return similarity;
 }
+
