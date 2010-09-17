@@ -17,6 +17,7 @@ public:
 	double distanceBetween(Mat a,Mat b);
 
 	Mat cloneMat(Mat src, int x0, int y0, int x1, int y1);
+	Mat equalizedMat(Mat mat);
 };
 
 #endif /* LOCALIZEDSIMILARITYCALCULATOR_H_ */

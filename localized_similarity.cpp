@@ -12,7 +12,7 @@
 
 // Weights of importance of each method for calculating the distance
 #define RECTANGLES_WEIGHT 		1.0
-#define CENTRAL_WINDOW_WEIGHT	1.0
+#define CENTRAL_WINDOW_WEIGHT	0.4
 #define SLIDING_WINDOW_WEIGHT 	0.0
 #define TOTAL_WEIGHT			RECTANGLES_WEIGHT + CENTRAL_WINDOW_WEIGHT + SLIDING_WINDOW_WEIGHT
 
@@ -22,16 +22,20 @@
 #define SLIDING_WINDOW_SIZE_RATIO	0.5
 
 double LocalizedSimilarityCalculator::calculate(Mat a, Mat b){
+	// Equalize channels
+	Mat aEq = equalizedMat(a);
+	Mat bEq = equalizedMat(b);
+
 	// Possible result could be a combination of 3 methods
 	// - evaluate NxN rectangles of Mat a with the NxN rectangles of B
 	// - evaluate the central rectangle
 	// - use sliding windows
 	double rectanglesDistance = RECTANGLES_WEIGHT != 0 ?
-			rectangleCalculate(a, b) : 0.0;
+			rectangleCalculate(aEq, bEq) : 0.0;
 	double slidingWindowDistance = SLIDING_WINDOW_WEIGHT != 0 ?
-			slidingWindowCalculate(a, b) : 0.0;
+			slidingWindowCalculate(aEq, bEq) : 0.0;
 	double centralWindowDistance = CENTRAL_WINDOW_WEIGHT != 0 ?
-			centralWindowCalculate(a, b) : 0.0;
+			centralWindowCalculate(aEq, bEq) : 0.0;
 	// printf("%f, %f, %f\n", rectanglesDistance, slidingWindowDistance, centralWindowDistance);
 	// Return avg
 	double sum = 0;
@@ -119,7 +123,7 @@ double LocalizedSimilarityCalculator::distanceBetween(Mat a,Mat b){
 	MatND hista, histb;
 	Mat a_hsv, b_hsv;
 
-	int histsize[] = { 64, 64 };
+	int histsize[] = { 32, 32 };
 	int channels[] = { 0, 1 };
 	float hrange[] = { 0, 180 };
 	float srange[] = { 0, 255 };
@@ -181,3 +185,27 @@ Mat LocalizedSimilarityCalculator::cloneMat(Mat src, int x0, int y0, int x1, int
 	}
 	return rect;
 }
+
+/**
+ * Equalize the colors in order to level all the pictures' colors
+ * around the same level.
+ */
+Mat LocalizedSimilarityCalculator::equalizedMat(Mat mat){
+	// equalizeHist() can only be applied to a grayscale image
+	// Since our picture is a BGR one, split it into 3 channels
+	// and equalize each of them separatedly and merge the output
+	// Not the best solution, but simple enough to perform
+	vector<Mat> channels(3);
+	split(mat, channels);
+
+	// Equalize channels
+	vector<Mat> channelsEq(3);
+	equalizeHist(channels[0], channelsEq[0]);
+	equalizeHist(channels[1], channelsEq[1]);
+	equalizeHist(channels[2], channelsEq[2]);
+
+	Mat matEq;
+	merge(channelsEq, matEq);
+	return matEq;
+}
+
