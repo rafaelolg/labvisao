@@ -50,18 +50,16 @@ int main(int argc, char **argv)
     for (size_t j = 0; j < target_imgs.size(); j++) {
         Mat target_img = target_imgs[j];
         string target_name = target_names[j];
-        vector < result_data > similarities = get_similarities(target_img, imgs, img_names, &d);
-        cout << target_name;
+        vector < string > similars = d.getMostSimilars(target_img, imgs, img_names, 10);
         for(size_t i = 0; i < 10; i++) {
-            cout << "\t" << similarities[i].second;
+            cout << "\t" << similars[i];
 
             // Temporary imshow of 10 best results
             stringstream ss;
             ss << i+1;
             ss << ": ";
-            ss << similarities[i].second;
-
-            imshow(ss.str(), imread(similarities[i].second));
+            ss << similars[i];
+            imshow(ss.str(), imread(similars[i]));
             cvMoveWindow(ss.str().c_str(), 260*(i%5), 260*(i/5));
         }
         cout << std::endl;
@@ -78,16 +76,30 @@ int main(int argc, char **argv)
     return 0;
 }
 
+
+
+
+vector < string > SimilarityCalculator::getMostSimilars(Mat target_img, vector <Mat> imgs, vector<string> img_names, size_t n) {
+        vector < result_data > similarities = this->calculateSimilarities(target_img, imgs, img_names);
+        vector <string>   result;
+        for(size_t i = 0; i < n; i++) {
+            result.push_back(similarities[i].second);
+        }
+        return result;
+}
+
+
+
 /*
 * Returns a sorted result_data vector with de similarities of the image in
 * target_name image file to the image files in imgs vector.
 * */
-vector < result_data > get_similarities(Mat target_img, vector <Mat> imgs, vector<string> img_names, SimilarityCalculator * d)
+vector < result_data > SimilarityCalculator::calculateSimilarities(Mat target_img, vector <Mat> imgs, vector<string> img_names)
 {
     vector < result_data > similarities;
 
     for(size_t i = 0; i < imgs.size(); i++) {
-        double s = d->calculate(target_img, imgs[i]);
+        double s = this->calculate(target_img, imgs[i]);
         similarities.push_back(result_data(s, img_names[i]));
     }
     sort(similarities.begin(), similarities.end(), sort_results);

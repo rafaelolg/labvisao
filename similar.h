@@ -20,9 +20,10 @@ class SimilarityCalculator
     public:
         virtual ~SimilarityCalculator() {}
         virtual double calculate(Mat a,Mat b) = 0;
+        vector < string > getMostSimilars(Mat target_img, vector <Mat> imgs, vector<string> img_names, size_t n);
+        vector < result_data > calculateSimilarities(Mat target_img, vector <Mat> imgs, vector<string> img_names);
 };
 
 
-vector < result_data > get_similarities(Mat target_img, vector <Mat> imgs, vector<string> img_names, SimilarityCalculator * d);
 
 #endif
