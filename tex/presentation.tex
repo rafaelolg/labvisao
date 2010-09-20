@@ -1,0 +1,93 @@
+\documentclass[
+    style=paintings,
+    paper=screen,
+    blackslide,
+    nopagebreaks,
+    fleqn
+]{powerdot}
+
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage {graphicx}
+
+
+\pdsetup{
+lf=Ep1,
+rf=Laboratório de Visão Computacional,
+palette=GoldenGate,
+theslide=slide~\arabic{slide},
+list={itemsep=6pt},
+%randomdots,
+%dprop={dotstyle=ocircle,linewidth=.25pt},
+%dmindots=10,dmaxdots=30,
+%dbright=10,
+}
+
+
+
+\title{Busca em Imagens}
+\author{Rafael Lopes \and Rodrigo Okada \and William Mizuta}
+\date{
+September, 2010
+\vfill
+\includegraphics[height=.1\slidewidth ]{img/logo_usp_b.ps}
+\includegraphics[height=.1\slidewidth ]{img/logo_ime_b.ps}
+}
+\begin{document}
+\maketitle
+
+\begin{slide}{Outline}
+\tableofcontents{}
+\end{slide}
+
+\section[slide=false]{Secao 1}
+\begin{slide}{Introduction}
+\begin{enumerate}[type=1]
+\item The first thing;\pause
+\item The second thing;\pause
+\item The third thing;\pause
+\item The final thing!
+\end{enumerate}
+\end{slide}
+
+
+\section[slide=false]{Secao 2}
+
+\begin{slide}{Objectives}
+Teste de coisas com pausas:
+\begin{itemize}[]
+\item <2> The first;
+\item <3> The second;
+\begin{itemize}[type=1]
+\item <4> One,
+\item <5> Two,
+\item <6> Three,
+\end{itemize}
+\item <7> The last one.
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}{Results}
+  \begin{equation}\label{binomium}
+      (a+b)^n=\sum_{k=0}^n{n\choose k}a^{n-k}b^k
+        \end{equation}\pause
+            Click the title of this slide to switch to the black slide.
+\end{slide}
+
+
+\section[slide=false]{Secao sem slide}
+\begin{slide}{link back}
+          We will prove formula (\ref{binomium}) on the blackboard.\\
+
+\end{slide}
+
+
+
+\begin{slide}{References}
+\bibliographystyle{plain}
+\bibliography{references}
+\end{slide}
+
+
+\end{document}
