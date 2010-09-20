@@ -345,6 +345,140 @@ Entrada & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\tabularnewline
 
 \section{Análise de Resultados} 
 
+\subsection[]{Ground truth}
+Foi realizada uma entrevista na qual cada um teve que eleger, em ordem crescente, as dez imagens do banco de imagens que eles achavam mais parecidas na opinião de cada um. Com isso, tem-se uma referência que servirá como referência para os algoritmos implementados. O resultado da pesquisa pode ser visto a seguir:
+
+\begin{center}
+\begin{tabular}{ @{}c@{}||@{}c@{}  @{}c@{}  @{}c@{}  @{}c@{}  @{}c@{}  @{}c@{}  @{}c@{}  @{}c@{}  @{}c@{}  @{}c@{} }
+\hline 
+Entrada & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\tabularnewline
+\hline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0109.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0107.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0009.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0108.jpg} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0112.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0097.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0010.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0090.jpg} &  
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0098.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0080.jpg}\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.002.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0098.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0097.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0010.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0096.jpg} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0005.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0016.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0095.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0004.jpg} &  
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0009.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0076.jpg}\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.003.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0086.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0008.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0013.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0014.jpg} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0092.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0085.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0055.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0056.jpg} &  
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0090.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0057.jpg}\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.004.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0095.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0005.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0096.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0016.jpg} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0098.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0010.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0004.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0075.jpg} &  
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0097.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0058.jpg}\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.005.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0011.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0015.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0006.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0091.jpg} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0103.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0102.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0022.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0104.jpg} &  
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0099.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0100.jpg}\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.006.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0104.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0022.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0102.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0011.jpg} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0100.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0099.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0103.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0101.jpg} &  
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0015.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0020.jpg}\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.007.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0101.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0100.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0102.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0020.jpg} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0022.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0099.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0103.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0104.jpg} &  
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0015.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0073.jpg}\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.008.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0007.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0003.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0017.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0019.jpg} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0012.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0082.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0105.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0106.jpg} &  
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0081.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0053.jpg}\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.009.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0093.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0118.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0094.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0018.jpg} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0099.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0100.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0101.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0070.jpg} &  
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0004.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0011.jpg}\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.010.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0106.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0021.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0105.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0012.jpg} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0019.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0091.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0056.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0017.jpg} &  
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0081.jpg} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0082.jpg}\tabularnewline
+\hline
+\end{tabular}
+\end{center}
+
+\subsection[]{Medida}
+
 \section{Conclusão} 
 \end{document}
 
