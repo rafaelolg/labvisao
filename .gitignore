@@ -1,5 +1,8 @@
 *.o
 /similar
 *.*~
-/lista.txt
+buscaR/
+BDR/
 /udrdomal.jpg
+/tex/buscaR
+/tex/DBR

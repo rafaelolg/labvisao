@@ -38,10 +38,8 @@ package:cleanall
 
 
 clean:
-	rm -f $(OBJS) 
+	rm -f $(OBJS) $(PROGRAM)
 
-cleanall: clean
-	rm -f  $(PROGRAM)
 
 
 .PHONY:clean cleanall package
