@@ -22,6 +22,7 @@ class SimilarityCalculator
         virtual double calculate(Mat a,Mat b) = 0;
         vector < string > getMostSimilars(Mat target_img, vector <Mat> imgs, vector<string> img_names, size_t n);
         vector < result_data > calculateSimilarities(Mat target_img, vector <Mat> imgs, vector<string> img_names);
+        void printSimilarities(vector<Mat> target_imgs, vector<string> taget_names, vector <Mat> imgs, vector<string> img_names);
 };
 
 

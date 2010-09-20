@@ -10,6 +10,7 @@
 #include "surf_similarity.h"
 #include "histogram_similarity.h"
 #include "localized_similarity.h"
+#include "moments_similarity.h"
 
 using namespace std;
 using namespace cv;
@@ -35,44 +36,21 @@ int main(int argc, char **argv)
     while(file_list >> temp) {
         img_names.push_back(temp);
         imgs.push_back(imread(temp));
-        cout << "loaded " << temp << std::endl;
+        //cout << "loaded " << temp << std::endl;
     }
     while(search_list >> temp) {
         target_names.push_back(temp);
         target_imgs.push_back(imread(temp));
-        cout << "loaded " << temp << std::endl;
+        //cout << "loaded " << temp << std::endl;
     }
 
 
-    //HistogramSimilarityCalculator d;
+    HistogramSimilarityCalculator d;
     //SurfSimilarityCalculator d;
-    LocalizedSimilarityCalculator d;
-    for (size_t j = 0; j < target_imgs.size(); j++) {
-        Mat target_img = target_imgs[j];
-        string target_name = target_names[j];
-        vector < string > similars = d.getMostSimilars(target_img, imgs, img_names, 10);
-        for(size_t i = 0; i < 10; i++) {
-            cout << "\t" << similars[i];
-
-            // Temporary imshow of 10 best results
-            stringstream ss;
-            ss << i+1;
-            ss << ": ";
-            ss << similars[i];
-            imshow(ss.str(), imread(similars[i]));
-            cvMoveWindow(ss.str().c_str(), 260*(i%5), 260*(i/5));
-        }
-        cout << std::endl;
-
-        // Show input img
-        imshow(target_name, target_img);
-        cvMoveWindow(target_name.c_str(), 0, 260*2);
-
-        // Destroy all windows and resume the loop, doing a search on the next input
-        waitKey();
-        cvDestroyAllWindows();
-    }
-    waitKey();
+    //LocalizedSimilarityCalculator d;
+    //LocalizedMomentsSimilarityCalculator d;
+    d.printSimilarities(target_imgs, target_names, imgs, img_names);
+    //waitKey();
     return 0;
 }
 
@@ -105,6 +83,25 @@ vector < result_data > SimilarityCalculator::calculateSimilarities(Mat target_im
     sort(similarities.begin(), similarities.end(), sort_results);
     return similarities;
 }
+
+
+/*
+ * Prints the most similar images file names to the stdout
+ */
+
+void  SimilarityCalculator::printSimilarities(vector<Mat> target_imgs, vector<string> target_names, vector <Mat> imgs, vector<string> img_names){
+    for (size_t j = 0; j < target_imgs.size(); j++) {
+        Mat target_img = target_imgs[j];
+        string target_name = target_names[j];
+        cout << target_name;
+        vector < string > similars = this->getMostSimilars(target_img, imgs, img_names, 10);
+        for(size_t i = 0; i < 10; i++) {
+            cout << "\t" << similars[i];
+        }
+        cout << std::endl;
+    }
+}
+
 
 /*
 * Sort results in lexical order of similarities.
