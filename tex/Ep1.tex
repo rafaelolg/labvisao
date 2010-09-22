@@ -351,9 +351,13 @@ Entrada & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\tabularnewline
 \end{center}
 \end{table}
 
-\section{Análise de Resultados} 
+\section{Análise de Resultados}
+O projeto propôs-se a solucionar dois problemas da área de busca de imagens: encontrar as n imagens mais similares, que será explicado na seção \ref{sim}; e encontrar um classificador para indentificar as imagens que pertencem ao mesmo grupo da imagem de referência, explicado na seção \ref{clas}.
 
-\subsection[]{Ground truth}
+\subsection{Busca das mais similares}
+\label{sim}
+
+\subsubsection[]{Ground truth}
 Realizou-se uma entrevista na qual cada um teve que eleger, em ordem crescente, as dez imagens do banco de imagens que eles achavam mais parecidas na opinião de cada um. Com isso, tem-se uma referência que servirá como referência para os algoritmos implementados. O resultado da pesquisa pode ser visto na tabela \ref{gt}:
 
 \begin{table}[H]
@@ -489,7 +493,7 @@ Entrada & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\tabularnewline
 \end{center}
 \end{table}
 
-\subsection[]{Medida}
+\subsubsection[]{Medida}
 Para verificar a eficácia dos algoritmos em relação ao \it{ground truth}, criou-se a seguinte medida:
 
 \begin{equation}
@@ -585,6 +589,9 @@ Desvio Padr\~ao &
 \label{metrica}
 \end{center}
 \end{table}
+
+\subsection{Classificador de busca}
+\label{clas}
 
 \section{Conclusão} 
 \end{document}
