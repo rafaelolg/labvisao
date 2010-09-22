@@ -503,24 +503,87 @@ onde $l_i$ é a posição da imagem $i$ no resultado do algoritmo e $p_i$ é a posiç
 
 \begin{table}[H]
 \begin{center}
-\begin{tabular}{| @{ }c@{ } | @{ }c@{ }  @{ }c@{ }  @{ }c@{ }  @{ }c@{ }  @{ }c@{ }  @{ }c@{ }  @{ }c@{ }  @{ }c@{ }  @{ }c@{ }  @{ }c@{ } |}
+\begin{tabular}{|c| c | c | c | c |}
 \hline 
 Entrada & 
+Histograma Global &     
+Momentos em Janelas &   
+Histograma em Janelas & 
+Surf \\
+\hline
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001.jpg} &
+0.016364 &
+0.036364 &
+0.336364 & 
+0.105455 \\
+
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.002.jpg} &
+ 0.220000 &
+ 0.116364 &
+ 0.356364 &
+ 0.101818 \\
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.003.jpg} &
+ 0.036364 &
+ 0.300000 &
+ 0.492727 &
+ 0.000000 \\
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.004.jpg} &
+0.000000 &
+0.278182 &
+0.081818 & 
+0.000000 \\
+
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.005.jpg} &
+0.032727 &
+0.178182 &
+0.000000 & 
+0.147273 \\
+
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.006.jpg} &
+0.156364 &
+0.210909 &
+0.214545 & 
+0.000000 \\
+
+
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.007.jpg} &
+0.116364&
+0.029091&
+0.140000& 
+0.007273\\
+
+
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.008.jpg} &
+0.000000 &
+0.114545 &
+0.130909 & 
+0.081818 \\
+
+
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.009.jpg} &
-\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.010.jpg} 
+0.490909 &
+0.278182 &
+0.529091 & 
+0.116364 \\
+
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.010.jpg} &
+0.196364 &
+0.000000 &
+0.087273 & 
+0.192727 \\
 \tabularnewline\hline
-Referência & 9 & 121 & 20 & 0 & 18 & 86 & 64 & 0 & 270 & 108 
-\tabularnewline
-Proposto & 185 & 196 & 271 & 45 & 0 & 118 & 77 & 72 & 291 & 54
-\tabularnewline\hline
+M\'edia &
+0.126545 &
+0.154182 &
+0.236909 & 
+0.075273 \\
+
+Desvio Padr\~ao &
+0.144383 &
+0.105883 &
+0.172821 & 
+0.066294 \\
+\hline
 \end{tabular}
 \caption{\small Comparando a medida de similaridade do algoritmos estudados}
 \label{metrica}
