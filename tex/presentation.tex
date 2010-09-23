@@ -19,7 +19,7 @@ palette=GoldenGate,
 theslide=slide~\arabic{slide},
 list={itemsep=6pt},
 %randomdots,
-%dprop={dotstyle=ocircle,linewidth=.25pt},
+%dprop={dotstyle=ocircle,slidewidth=.25pt},
 %dmindots=10,dmaxdots=30,
 %dbright=10,
 }
@@ -48,6 +48,12 @@ Setembro, 2010
 \item <1-> Busca de imagens por similaridade
 \item <2-> Funcionalidades do OpenCV
 \end{itemize}
+\begin{figure}
+\vskip -1cm
+\includegraphics[width=0.3\slidewidth]{img/lena}
+\hskip 2cm
+\pause\includegraphics[width=0.3\slidewidth]{img/opencv_logo_with_text}
+\end{figure}
 \end{slide}
 
 
@@ -69,7 +75,7 @@ Setembro, 2010
 \item <1-> Método de referência
 \end{itemize}
 \begin{center}
-\includegraphics[width=0.80\linewidth]{img/histograma_global}
+\includegraphics[width=0.65\slidewidth]{img/histograma_global}
 \end{center}
 \end{slide}
 
@@ -78,7 +84,17 @@ Setembro, 2010
 \begin{itemize}[type=1]
 \item <1-> Calcula a similaridade tentando fazer o correlacionamento sobre pontos de interesse
 \begin{center}
-\includegraphics[width=0.80\linewidth]{img/SURF}
+\includegraphics[width=0.65\slidewidth]{img/surf}
+\end{center}
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}{SURF}
+\begin{itemize}[type=1]
+\item <1-> Calcula a similaridade tentando fazer o correlacionamento sobre pontos de interesse
+\begin{center}
+\includegraphics[width=0.65\slidewidth]{img/SURF}
 \end{center}
 \end{itemize}
 \end{slide}
@@ -89,7 +105,20 @@ Setembro, 2010
 \item <1-> Divide a imagem em NxN janelas e calcula a diferença pelo momento
 das janelas de duas imagens
 \begin{center}
-\includegraphics[width=0.80\linewidth]{img/momento_de_janelas}
+\includegraphics[width=0.3\slidewidth]{img/janela1}
+\hskip 2cm
+\includegraphics[width=0.3\slidewidth]{img/janela}
+\end{center}
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}{Momento de janelas}
+\begin{itemize}[type=1]
+\item <1-> Divide a imagem em NxN janelas e calcula a diferença pelo momento
+das janelas de duas imagens
+\begin{center}
+\includegraphics[width=0.65\slidewidth]{img/momento_de_janelas}
 \end{center}
 \end{itemize}
 \end{slide}
@@ -99,7 +128,7 @@ das janelas de duas imagens
 \begin{itemize}[type=1]
 \item <1-> Calcula a diferença entre janelas de duas imagens
 \begin{center}
-\includegraphics[width=0.80\linewidth]{img/histograma_em_janelas}
+\includegraphics[width=0.65\slidewidth]{img/histograma_em_janelas}
 \end{center}
 \end{itemize}
 \end{slide}
@@ -118,21 +147,21 @@ das janelas de duas imagens
 
 \begin{slide}{Similaridade - Resultados}
 \begin{center}
-\includegraphics[width=0.80\linewidth]{img/tabela1}
+\includegraphics[width=0.8\slidewidth]{img/tabela1}
 \end{center}
 \end{slide}
 
 
 \begin{slide}{Classificador - curva ROC}
 \begin{center}
-\includegraphics[width=0.65\linewidth]{img/curvaroc}
+\includegraphics[width=0.6\slidewidth]{img/curvaroc}
 \end{center}
 \end{slide}
 
 
 \begin{slide}{Classificador - curva Precision X Recall}
 \begin{center} 
-\includegraphics[width=0.65\linewidth]{img/precision_recall}
+\includegraphics[width=0.6\slidewidth]{img/precision_recall}
 \end{center}
 \end{slide}
 
@@ -142,6 +171,7 @@ das janelas de duas imagens
 \begin{itemize}[type=1]
 \item <1-> O trabalho introduziu os conceitos básicos do OpenCV, exercitando suas funcionalidades básicas
 \item <2-> Análise de resultados através de ground truth permite avaliação objetiva de algum método, quantificando sua precisão
+\item <3-> O método de histogramas em janela apresentou o melhor resultado médio: tanto na similaridade quanto no classificador
 \end{itemize}
 \end{slide}
 
