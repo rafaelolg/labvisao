@@ -9,6 +9,7 @@
 \usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage {graphicx}
+\usepackage {grffile}
 
 
 \pdsetup{
@@ -28,7 +29,7 @@ list={itemsep=6pt},
 \title{Busca em Imagens}
 \author{Rafael Lopes \and Rodrigo Okada \and William Mizuta}
 \date{
-September, 2010
+Setembro, 2010
 \vfill
 \includegraphics[height=.1\slidewidth ]{img/logo_usp_b.ps}
 \includegraphics[height=.1\slidewidth ]{img/logo_ime_b.ps}
@@ -36,58 +37,289 @@ September, 2010
 \begin{document}
 \maketitle
 
-\begin{slide}{Outline}
+\begin{slide}{Linhas gerais}
 \tableofcontents{}
+\setcounter{secnumdepth}{-1}
 \end{slide}
 
-\section[slide=false]{Secao 1}
-\begin{slide}{Introduction}
-\begin{enumerate}[type=1]
-\item The first thing;\pause
-\item The second thing;\pause
-\item The third thing;\pause
-\item The final thing!
-\end{enumerate}
+\section[slide=false]{Introdução}
+\begin{slide}{Introdução}
+O objetivo do trabalho foi criar um novo método de busca de imagens por similaridade, 
+a fim de conhecer as funcionalidades do OpenCV.
 \end{slide}
 
 
-\section[slide=false]{Secao 2}
-
-\begin{slide}{Objectives}
-Teste de coisas com pausas:
-\begin{itemize}[]
-\item <2> The first;
-\item <3> The second;
+\section[slide=false]{Métodos}
+\begin{slide}{Métodos}
 \begin{itemize}[type=1]
-\item <4> One,
-\item <5> Two,
-\item <6> Three,
+\item <1-> Foram utilizados quatro diferentes métodos:
+\begin{itemize}[type=1]
+\item <2-> Histograma global
+\item <3-> Speeded Up Robust Features (SURF)
+\item <4-> Momento de janelas
+\item <5-> Histograma em janelas
 \end{itemize}
-\item <7> The last one.
+\end{itemize}
+\end{slide}
+
+\begin{slide}{Histograma global}
+\begin{itemize}[type=1]
+\item <1-> Método de referência
+\end{itemize}
+\vspace{-0.8cm}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c|ccccc}
+\hline 
+Entrada & 1 & 2 & 3 & 4 & 5\tabularnewline
+\hline
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0025.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0034.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0052.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0059.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0028.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.002.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0076.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0095.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0003.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0016.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0005.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.003.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0076.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0099.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0005.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0003.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0095.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.009.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0011.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0118.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0018.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0089.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0093.jpg.eps} 
+\tabularnewline
+\hline 
+\end{tabular}
+\end{center}
+\end{table}
+\end{slide}
+
+
+\begin{slide}{SURF}
+\begin{itemize}[type=1]
+\item <1-> Calcula a similaridade tentando fazer o correlacionamento sobre pontos de interesse
+\vspace{-0.8cm}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c|ccccc}
+\hline 
+Entrada & 1 & 2 & 3 & 4 & 5\tabularnewline
+\hline
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0035.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0094.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0112.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0067.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0026.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.002.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0075.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0117.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0025.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0047.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0037.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.003.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0037.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0072.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0112.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0120.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0040.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.009.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0094.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0077.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0044.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0071.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0015.jpg.eps} 
+\tabularnewline
+\hline 
+\end{tabular}
+\end{center}
+\end{table}
 \end{itemize}
 \end{slide}
 
 
-\begin{slide}{Results}
-  \begin{equation}\label{binomium}
-      (a+b)^n=\sum_{k=0}^n{n\choose k}a^{n-k}b^k
-        \end{equation}\pause
-            Click the title of this slide to switch to the black slide.
+\begin{slide}{Momento de janelas}
+\begin{itemize}[type=1]
+\item <1-> Divide a imagem em NxN janelas e calcula a diferença pelo momento
+das janelas de duas imagens
+\vspace{-0.8cm}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c|ccccc}
+\hline 
+Entrada & 1 & 2 & 3 & 4 & 5\tabularnewline
+\hline
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0110.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0010.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0033.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0075.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0039.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.002.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0112.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0002.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0064.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0063.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0066.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.003.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0083.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0008.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0092.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0048.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0096.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.009.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0076.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0118.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0018.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0074.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0086.jpg.eps} 
+\tabularnewline
+\hline 
+\end{tabular}
+\end{center}
+\end{table}
+\end{itemize}
 \end{slide}
 
 
-\section[slide=false]{Secao sem slide}
-\begin{slide}{link back}
-          We will prove formula (\ref{binomium}) on the blackboard.\\
+\begin{slide}{Histograma em janelas}
+\begin{itemize}[type=1]
+\item <1-> Calcula a diferença entre janelas de duas imagens
+\vspace{-0.8cm}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c|ccccc}
+\hline 
+Entrada & 1 & 2 & 3 & 4 & 5\tabularnewline
+\hline
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0050.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0049.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0059.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0097.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0107.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.002.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0098.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0022.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0029.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0003.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0010.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.003.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0013.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0008.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0084.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0031.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0086.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.009.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0018.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0118.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0093.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0100.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0074.jpg.eps} 
+\tabularnewline
+\hline 
+\end{tabular}
+\end{center}
+\end{table}
+\end{itemize}
+\end{slide}
+
+
+\section[slide=false]{Resultados e análise}
+\begin{slide}{Similaridade - Metodologia da análise}
+\begin{itemize}[type=1]
+\item <1-> Comparação dos métodos com um \it{ground truth}
+\item <2-> Adoção de uma medida para calcular a similaridade entre os resultados 
+\item <3-> Cálculo da média e do desvio padrão da nota atribuída para cada imagem de entrada 
+\end{itemize}
+\pause$$T = \frac{\sum\limits_{i=1}^{10}(10-|l_i-p_i|) * (11-p_i)}{\sum\limits_{i=1}^{10}10*i}$$
+\end{slide}
+
+
+\begin{slide}{Similaridade - Resultados}
+\vspace{-0.4cm}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|c| c | c | c | c |}
+\hline
+Entrada & Histograma & Surf &  Momentos  & Histograma \\
+        &   Global   &      & em Janelas & em Janelas \\
+\hline
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001.jpg} &
+0.016 & 0.105 & 0.036 & 0.336 \\
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.002.jpg} &
+0.220 & 0.101 & 0.116 & 0.356 \\
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.003.jpg} &
+0.036 & 0.000 & 0.300 & 0.492 \\
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.009.jpg} &
+0.490 & 0.116 & 0.278 & 0.529 \\
+\hline
+$\mu$ & 0.126 & 0.154 & 0.236 & 0.075 \\
+$\sigma$ & 0.144 & 0.105 & 0.172 & 0.066 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\end{slide}
+
+
+\begin{slide}{Classificador - curva ROC}
 
 \end{slide}
 
 
+\begin{slide}{Classificador - curva PrecisionxRecall}
 
-\begin{slide}{References}
-\bibliographystyle{plain}
-\bibliography{references}
 \end{slide}
+
+
+\section[slide=false]{Conclusão}
+\begin{slide}{Conclusão}
+\begin{itemize}[type=1]
+\item <1-> O trabalho introduziu os conceitos básicos do OpenCV, exercitando suas funcionalidades básicas
+\item <2-> Análise de resultados através de ground truth permite avaliação objetiva de algum método, quantificando sua precisão
+\end{itemize}
+\end{slide}
+
+%\section[slide=false]{Referências}
+%\begin{slide}{Referências}
+%\bibliographystyle{plain}
+%\bibliography{references}
+%\end{slide}
 
 
 \end{document}
