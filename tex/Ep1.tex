@@ -1,7 +1,6 @@
 \documentclass[
-fontsize=10pt,
 %twocolumn=true,
-%titlepage=true,
+titlepage=true,
 headings=normal,
 DIV=14,
 ]{scrartcl}
@@ -42,7 +41,9 @@ DIV=14,
 
     Note que o método descrito analisa uma característica global da imagem, prontamente disponível, sem analisar o conteúdo semântico ou posicionamento dos objetos. Assim, para comparação, foram levantadas algumas alternativas que avaliassem tais características.\\
 
-    \subsubsection[]{Método de Referência}
+    \subsubsection[]{Método de Referência}]
+    \label{metodoref}
+
 
     O método de referência é utilizar a intersecção de histogramas entre duas imagens. Mais especificamente, as imagens são convertidas para o espaço de cor HSV, e então, os canais \emph{H} e \emph{V} são quantizados em 64 níveis cada, para então construir os histogramas que serão comparados via intersecção.
 
@@ -56,27 +57,35 @@ DIV=14,
 
 \subsubsection[]{Análise por Região}
 
-Outra método sugerido foi analisar as imagens em partes, aonde cada imagem é dividida em $N\times N$ blocos, numerados de $0$ a $N\times N-1$, aonde o bloco $i$ é aquele presente na linha $i\div N$ e coluna $i\%N$. A comparação entre duas imagens, então, é feita comparando seus blocos de mesma posição, extraíndo um valor numérico de cada um quantificando a diferença entre blocos. A diferença das imagens, então, torna-se as médias das diferenças entre cada bloco.
+Outra método sugerido foi analisar as imagens em partes, aonde cada imagem é dividida em $N\times N$ blocos, numerados de $0$ a $N\times N-1$, aonde o bloco $i$ é aquele presente na linha ${i}\over{N}$ e coluna $i|N$. A comparação entre duas imagens, então, é feita comparando seus blocos de mesma posição, extraindo um valor numérico de cada um quantificando a diferença entre blocos. A diferença das imagens, então, torna-se as médias das diferenças entre cada bloco.
 
 Assim:
 
 \[
 dif.nn\left(a,b\right)=\frac{\sum\limits_{i=0}^{N\times N-1}dif\left(bloco\left(a,i\right),bloco\left(b,i\right)\right)}{N\times N}\]
 
-Aonde $dif(i,j)$ é uma função que retorna a diferença entre duas imagens $i$ e $j$, e $bloco(x,i)$, uma função  que extrái o bloco $i$ da imagem $x$. No caso, a função $dif(i,j)$ é a intersecção de histogramas utilizada no método de referência, porém, utilizando 32 níveis ao invés de 64. Para este experimento, foi utilizado $N=2$.
+Aonde $dif(i,j)$ é uma função que retorna a diferença entre duas imagens $i$ e $j$, e $bloco(x,i)$, uma função  que extrai o bloco $i$ da imagem $x$. No caso, a função $dif(i,j)$ é a intersecção de histogramas utilizada no método de referência, porém, utilizando 32 níveis ao invés de 64. Para este experimento, foi utilizado $N=2$.
 
 Porém, o centro da imagem, normalmente, possui grande relevância na sua identificação. O método dos $N\times N$ blocos não contempla este tipo de informação. Assim, além destes blocos, foi analisando um bloco com a metade da altura e largura, posicionada ao centro da imagem. Este bloco tem peso 0.4 em cima da diferença de todos os outros blocos.
 
 \[
 dif.img=\frac{dif.nn\left(a,b\right)+0.4\times dif(centro(a),centro(b))}{1.0+0.4}\]
 
-O resultado de todas as funções $dif$ retornam valor de 0 a 1, aonde 1 significa totalmente diferentes, e 0, totalmente similares.
+O resultado de todas as funções $dif$ retornam valor de 0 a 1, onde 1 significa totalmente diferentes, e 0, totalmente similares.
+
+Note que este esquema de janelas permite a escolha de qualquer método que calcule a diferença entre duas imagens ser usado, definindo portanto um \textit{framework} para cálculo de diferença e similaridade entre imagens.
+Para este experimento avaliamos dois métodos para calcular as diferenças: intersecção dos histogramas e diferença dos momentos.  A intersecção de histogramas é idêntica ao método de referência descrito em~\ref{metodoref}. A diferença dos momentos consiste em calcular, nos três canais de cores o vetor de médias $\mu$ e a variâncias $\sigma$ de cada canal de cor e somar a norma das diferenças:
+\[
+d(a,b) = \|\mu_a - \mu_b\| +  \|\sum \sigma_a - \sigma_b\|
+\]
+
+
 
 \subsection[]{Avaliação}
 
 A base de imagens que seria pesquisada continha 120 imagens pré-definidas, todas de tamanho idêntico, em formato JPG. Todas também continham informações de cor.\\
 
-Para avaliar o resultado de cada método, foi utilizado um \emph{Ground-Truth} como referencial. Este oráculo diz qual seria as imagens mais parecidas para uma imagem qualquer. Neste trabalho, foram utilizadas 10 imagens de entrada pré-definidas, cujo oráculo foi gerado a partir de opiniões de alunos de MAC5915, aonde era pedido que cada um listasse as 10 imagens mais parecidas com a imagem de entrada. As imagens mais votadas tornaram-se o Ground-Truth. No geral, oráculo foi formado por imagens cujo valor semântico melhor se aproximava da foto de entrada, isto é, tinham objetos que podem receber um mesmo nome.\\
+Para avaliar o resultado de cada método, foi utilizado um \emph{Ground-Truth} como referencial. Este \emph{ground trurh} diz qual seria as imagens mais parecidas para uma imagem qualquer. Neste trabalho, foram utilizadas 10 imagens de entrada pré-definidas, cujo \emph{ground trurh} foi gerado a partir de opiniões de alunos de MAC5915, aonde era pedido que cada um listasse as 10 imagens mais parecidas com a imagem de entrada. As imagens mais votadas tornaram-se o Ground-Truth. No geral, \emph{ground trurh} foi formado por imagens cujo valor semântico melhor se aproximava da foto de entrada, isto é, tinham objetos que podem receber um mesmo nome.\\
 
 \section[]{Resultados}
 
@@ -352,7 +361,7 @@ Entrada & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\tabularnewline
 \end{table}
 
 \section{Análise de Resultados}
-O projeto propôs-se a solucionar dois problemas da área de busca de imagens: encontrar as n imagens mais similares, que será explicado na seção \ref{sim}; e encontrar um classificador para indentificar as imagens que pertencem ao mesmo grupo da imagem de referência, explicado na seção \ref{clas}.
+O projeto propôs-se a solucionar dois problemas da área de busca de imagens: encontrar as n imagens mais similares, que será explicado na seção \ref{sim}; e encontrar um classificador para identificar as imagens que pertencem ao mesmo grupo da imagem de referência, explicado na seção \ref{clas}.
 
 \subsection{Busca das mais similares}
 \label{sim}
@@ -590,13 +599,28 @@ Desvio Padr\~ao &
 \end{center}
 \end{table}
 
-\subsection{Classificador de busca}
-\label{clas}
+\begin{figure}[!ht]
+\centering {
+\includegraphics[width=0.8\textwidth]{img/curvaroc.pdf} 
+\caption{Curva ROC}
+\label{fig:cet}
+}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering {
+\includegraphics[width=0.8\textwidth]{img/precision_recall.pdf} 
+\caption{Curva de Precisão por Cobertura}
+\label{fig:cet}
+}
+\end{figure}
+
+
 
 \section{Análise de Resultados} 
 \label{ana}
 
-Primeiramente, percebe-se que nenhum dos métodos propostos chegaram a concordar com as imagens do oráculo, apresentando uma taxa de falsos positivos elevada. Este fato evidencia diferenças entre as maneiras como um ser humano interpreta uma imagem e os métodos propostos, que analisam valores extraídos diretamente da imagem, e não sua semântica, que pode ser notada pelo \emph{ground truth} escolhido, aonde os ítens mais votados são aqueles que representam um mesmo tipo de objeto da imagem de entrada, independentemente do ângulo de visão, condições de luminosidade, posição ou escala do objeto.
+Primeiramente, percebe-se que nenhum dos métodos propostos chegou a concordar com as imagens do \emph{ground trurh}, apresentando uma taxa de falsos positivos elevada. Este fato evidencia diferenças entre as maneiras como um ser humano interpreta uma imagem e os métodos propostos, que analisam valores extraídos diretamente da imagem, e não sua semântica, que pode ser notada pelo \emph{ground truth} escolhido, aonde os itens mais votados são aqueles que representam um mesmo tipo de objeto da imagem de entrada, independentemente do ângulo de visão, condições de luminosidade, posição ou escala do objeto.
 
 O método de momentos de janelas, quando comparado ao método de referência, mostrou-se mais estável, com taxa maior de acertos com menor flutuação. Ainda assim, foi inferior à taxa de acertos do método de histogramas por janelas, que, contudo, apresentou o maior desvio entre os métodos avaliados. Aliás, as janelas mostraram uma melhoria com relação a uma análise global, até por utilizar características regionais de um local para analisar a forma como as cores estão dispostas, mesmo que de maneira simples.
 
@@ -609,9 +633,9 @@ Por fim, nota-se que a taxa de acertos por imagem teve grande variância. Enquant
 \section{Conclusão} 
 \label{concl}
 
-Este projeto, no que se refere ao aprendizado do OpenCV, foi de grande valia, aonde múltiplos métodos foram desenvolvidos através de funcionalidades básicas fornecidas, permitindo o uso da criatividade para criar formas com que as imagens deveriam ser buscadas. Apesar de não usar algoritmos complexos, excessão feita ao Surf, o aprendizado da manipulação de canais de cores, valores de pixels entendimento da estrutura básica do OpenCV foi o maior benefício para os autores.
+Este projeto, no que se refere ao aprendizado do OpenCV, foi de grande valia, aonde múltiplos métodos foram desenvolvidos através de funcionalidades básicas fornecidas, permitindo o uso da criatividade para criar formas com que as imagens deveriam ser buscadas. Apesar de não usar algoritmos complexos, exceção feita ao Surf, o aprendizado da manipulação de canais de cores, valores de pixels entendimento da estrutura básica do OpenCV foi o maior benefício para os autores.
 
-A análise dos resultados também teve sua contribuição, aonde foi visto uma análise através de um oráculo que pode ser definido como verdade absoluta do sistema ideal. Definir um parâmetro de comparação no início foi um passo importante, visto que é perfeitamente possível criar modelos de comparação após criar um novo algoritmo, cujo resultado é parcialmente forjado por uma análise tendenciosa.
+A análise dos resultados também teve sua contribuição, aonde foi visto uma análise através de um \emph{ground trurh} que pode ser definido como verdade absoluta do sistema ideal. Definir um parâmetro de comparação no início foi um passo importante, visto que é perfeitamente possível criar modelos de comparação após criar um novo algoritmo, cujo resultado é parcialmente forjado por uma análise tendenciosa.
 
 Por fim, vale notar as taxas encontradas, que foram bem abaixas do que pode ser considerado ideal. Apesar de não ser o objetivo principal do projeto, tal resultado exemplifica as dificuldades da visão computacional em desenvolver métodos precisos e computacionalmente eficientes para executar suas tarefas.
 
