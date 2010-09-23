@@ -61,7 +61,7 @@ Outra método sugerido foi analisar as imagens em partes, aonde cada imagem é div
 Assim:
 
 \[
-dif.nn\left(a,b\right)=\frac{\sum_{i=0}^{N\times N-1}dif\left(bloco\left(a,i\right),bloco\left(b,i\right)\right)}{N\times N}\]
+dif.nn\left(a,b\right)=\frac{\sum\limits_{i=0}^{N\times N-1}dif\left(bloco\left(a,i\right),bloco\left(b,i\right)\right)}{N\times N}\]
 
 Aonde $dif(i,j)$ é uma função que retorna a diferença entre duas imagens $i$ e $j$, e $bloco(x,i)$, uma função  que extrái o bloco $i$ da imagem $x$. No caso, a função $dif(i,j)$ é a intersecção de histogramas utilizada no método de referência, porém, utilizando 32 níveis ao invés de 64. Para este experimento, foi utilizado $N=2$.
 
@@ -497,7 +497,7 @@ Entrada & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10\tabularnewline
 Para verificar a eficácia dos algoritmos em relação ao \emph{ground truth}, criou-se a seguinte medida:
 
 \begin{equation}
-T = \sum\limits_{i=1}^{10}(10-|l_i-p_i|) * (11-p_i)
+T = \frac{\sum\limits_{i=1}^{10}(10-|l_i-p_i|) * (11-p_i)}{\sum\limits_{i=1}^{10}10*i}
 \end{equation}
 onde $l_i$ é a posição da imagem $i$ no resultado do algoritmo e $p_i$ é a posição da mesma imagem no \emph{ground truth}. Caso a imagem não esteja no \emph{ground truth}, o valor de $p_i$ é $11$. Essa métrica atribui pesos maiores para imagens que são mais parecidas ($11-p_i$) e verifica a distância entre a posição da imagem no resultado do algoritmo e no \emph{ground truth} ($10 - |l_i - p_i|$). O resultado pode ser visto na tabela \ref{metrica}.
 
