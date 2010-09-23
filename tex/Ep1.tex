@@ -76,8 +76,9 @@ O resultado de todas as funções $dif$ retornam valor de 0 a 1, onde 1 significa 
 Note que este esquema de janelas permite a escolha de qualquer método que calcule a diferença entre duas imagens ser usado, definindo portanto um \textit{framework} para cálculo de diferença e similaridade entre imagens.
 Para este experimento avaliamos dois métodos para calcular as diferenças: intersecção dos histogramas e diferença dos momentos.  A intersecção de histogramas é idêntica ao método de referência descrito em~\ref{metodoref}. A diferença dos momentos consiste em calcular, nos três canais de cores o vetor de médias $\mu$ e a variâncias $\sigma$ de cada canal de cor e somar a norma das diferenças:
 \[
-d(a,b) = \|\mu_a - \mu_b\| +  \|\sum \sigma_a - \sigma_b\|
+d(a,b) = \|\mu_a - \mu_b\| +  \|\sigma_a - \sigma_b\|
 \]
+
 
 
 
@@ -625,6 +626,11 @@ Primeiramente, percebe-se que nenhum dos métodos propostos chegou a concordar co
 O método de momentos de janelas, quando comparado ao método de referência, mostrou-se mais estável, com taxa maior de acertos com menor flutuação. Ainda assim, foi inferior à taxa de acertos do método de histogramas por janelas, que, contudo, apresentou o maior desvio entre os métodos avaliados. Aliás, as janelas mostraram uma melhoria com relação a uma análise global, até por utilizar características regionais de um local para analisar a forma como as cores estão dispostas, mesmo que de maneira simples.
 
 O SURF teve o pior desempenho dentre os novos métodos, com taxa de acertos menores do que o método original, e com um desvio valor próximo à própria média. Não se esperou uma taxa de acerto altas, até pelo banco de imagens, compostos por objetos sob pontos de vistas e locais muito diferentes. O SURF, apesar de útil na junção de imagens panorâmicas, aonde cada imagem contém uma parte da imagem total, não é robusta para este tipo de operação de busca.
+
+Tanto a diferença de histogramas como a de momentos (no caso só o primeiro e segundo momentos) tentam capturar características globais da imagem o que faz mais sentido
+nesta aplicação do que tentar realizar o casamento de pontos como o que é feito utlizando o SURF.
+
+
 
 Vale notar que o método original tem desvio superior à própria média, o único método que teve tal característica.
 
