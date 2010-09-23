@@ -31,14 +31,21 @@ def tp_fp_tn_fn(elements_of, similarity, threshold):
                     false_negative += 1
                 else:
                     true_negative += 1
-    
     especificidade = true_negative / (true_negative + false_positive)
     sensitividade = true_positive / (true_positive + false_negative)
-    return (true_positive, false_positive, 
+    if (true_positive + false_positive):
+        precisao = true_positive / (true_positive + false_positive)
+    else:
+        precisao = 0
+
+
+
+    return (true_positive, false_positive,
             true_negative,
             false_negative,
             especificidade,
-            sensitividade)
+            sensitividade,
+            precisao)
 
 
 if __name__ == '__main__':
@@ -61,7 +68,7 @@ if __name__ == '__main__':
             similaridade[row[0]] = [float(val) for val in row[1:]]
         
         th = 0
-        medidas.write('THRESH TP FP TN FN ESPECIFICIDADE SENSITIVIDADE\n')
+        medidas.write('THRESH TP FP TN FN ESPECIFICIDADE SENSITIVIDADE PRECISAO\n')
         while th < 1:
             med = ["%f" % th] +["%f" %  med for med in tp_fp_tn_fn(elements_of, similaridade, th)]
             medidas.write(' '.join(med))

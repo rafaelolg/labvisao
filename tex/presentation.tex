@@ -37,6 +37,7 @@ Setembro, 2010
 \begin{document}
 \maketitle
 
+<<<<<<< HEAD
 %\begin{slide}{Linhas gerais}
 %\tableofcontents{}
 %\setcounter{secnumdepth}{-1}
@@ -111,6 +112,82 @@ Entrada & 1 & 2 & 3 & 4 & 5\tabularnewline
 \end{slide}
 
 
+=======
+\begin{slide}{Linhas gerais}
+\tableofcontents{}
+\setcounter{secnumdepth}{-1}
+\end{slide}
+
+\section[slide=false]{Introdução}
+\begin{slide}{Introdução}
+O objetivo do trabalho foi criar um novo método de busca de imagens por similaridade, 
+a fim de conhecer as funcionalidades do OpenCV.
+\end{slide}
+
+
+\section[slide=false]{Métodos}
+\begin{slide}{Métodos}
+\begin{itemize}[type=1]
+\item <1-> Foram utilizados quatro diferentes métodos:
+\begin{itemize}[type=1]
+\item <2-> Histograma global
+\item <3-> Speeded Up Robust Features (SURF)
+\item <4-> Momento de janelas
+\item <5-> Histograma em janelas
+\end{itemize}
+\end{itemize}
+\end{slide}
+
+\begin{slide}{Histograma global}
+\begin{itemize}[type=1]
+\item <1-> Método de referência
+\end{itemize}
+\vspace{-0.8cm}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{c|ccccc}
+\hline 
+Entrada & 1 & 2 & 3 & 4 & 5\tabularnewline
+\hline
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0025.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0034.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0052.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0059.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0028.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.002.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0076.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0095.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0003.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0016.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0005.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.003.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0076.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0099.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0005.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0003.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0095.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.009.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0011.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0118.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0018.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0089.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0093.jpg.eps} 
+\tabularnewline
+\hline 
+\end{tabular}
+\end{center}
+\end{table}
+\end{slide}
+
+
+>>>>>>> b6507f824cdb4451dd86e5d9e41b97b741a3627e
 \begin{slide}{SURF}
 \begin{itemize}[type=1]
 \item <1-> Calcula a similaridade tentando fazer o correlacionamento sobre pontos de interesse
@@ -121,6 +198,7 @@ Entrada & 1 & 2 & 3 & 4 & 5\tabularnewline
 \hline 
 Entrada & 1 & 2 & 3 & 4 & 5\tabularnewline
 \hline
+<<<<<<< HEAD
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001} & 
 \includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0035} & 
 \includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0094} & 
@@ -151,6 +229,38 @@ Entrada & 1 & 2 & 3 & 4 & 5\tabularnewline
 \includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0044} & 
 \includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0071} &
 \includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0015} 
+=======
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0035.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0094.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0112.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0067.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0026.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.002.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0075.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0117.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0025.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0047.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0037.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.003.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0037.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0072.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0112.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0120.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0040.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.009.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0094.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0077.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0044.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0071.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0015.jpg.eps} 
+>>>>>>> b6507f824cdb4451dd86e5d9e41b97b741a3627e
 \tabularnewline
 \hline 
 \end{tabular}
@@ -171,6 +281,7 @@ das janelas de duas imagens
 \hline 
 Entrada & 1 & 2 & 3 & 4 & 5\tabularnewline
 \hline
+<<<<<<< HEAD
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001} & 
 \includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0110} & 
 \includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0010} & 
@@ -201,6 +312,38 @@ Entrada & 1 & 2 & 3 & 4 & 5\tabularnewline
 \includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0018} & 
 \includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0074} &
 \includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0086} 
+=======
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0110.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0010.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0033.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0075.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0039.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.002.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0112.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0002.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0064.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0063.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0066.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.003.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0083.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0008.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0092.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0048.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0096.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.009.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0076.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0118.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0018.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0074.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0086.jpg.eps} 
+>>>>>>> b6507f824cdb4451dd86e5d9e41b97b741a3627e
 \tabularnewline
 \hline 
 \end{tabular}
@@ -220,6 +363,7 @@ Entrada & 1 & 2 & 3 & 4 & 5\tabularnewline
 \hline 
 Entrada & 1 & 2 & 3 & 4 & 5\tabularnewline
 \hline
+<<<<<<< HEAD
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001} & 
 \includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0050} & 
 \includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0049} & 
@@ -250,6 +394,38 @@ Entrada & 1 & 2 & 3 & 4 & 5\tabularnewline
 \includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0093} & 
 \includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0100} &
 \includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0074} 
+=======
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0050.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0049.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0059.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0097.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0107.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.002.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0098.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0022.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0029.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0003.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0010.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.003.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0013.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0008.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0084.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0031.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0086.jpg.eps} 
+\tabularnewline
+\hline 
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.009.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0018.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0118.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0093.jpg.eps} & 
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0100.jpg.eps} &
+\includegraphics[width=1.3cm,height=1.3cm]{DBR/imagem.0074.jpg.eps} 
+>>>>>>> b6507f824cdb4451dd86e5d9e41b97b741a3627e
 \tabularnewline
 \hline 
 \end{tabular}
@@ -279,6 +455,7 @@ Entrada & 1 & 2 & 3 & 4 & 5\tabularnewline
 Entrada & Histograma & Surf &  Momentos  & Histograma \\
         &   Global   &      & em Janelas & em Janelas \\
 \hline
+<<<<<<< HEAD
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001} &
 0.016 & 0.105 & 0.036 & 0.336 \\
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.002} &
@@ -286,6 +463,15 @@ Entrada & Histograma & Surf &  Momentos  & Histograma \\
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.003} &
 0.036 & 0.000 & 0.300 & 0.492 \\
 \includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.009} &
+=======
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.001.jpg} &
+0.016 & 0.105 & 0.036 & 0.336 \\
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.002.jpg} &
+0.220 & 0.101 & 0.116 & 0.356 \\
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.003.jpg} &
+0.036 & 0.000 & 0.300 & 0.492 \\
+\includegraphics[width=1.3cm,height=1.3cm]{buscaR/busca.009.jpg} &
+>>>>>>> b6507f824cdb4451dd86e5d9e41b97b741a3627e
 0.490 & 0.116 & 0.278 & 0.529 \\
 \hline
 $\mu$ & 0.126 & 0.154 & 0.236 & 0.075 \\
@@ -296,6 +482,11 @@ $\sigma$ & 0.144 & 0.105 & 0.172 & 0.066 \\
 \end{table}
 \end{slide}
 
+<<<<<<< HEAD
+=======
+
+\begin{slide}{Classificador - curva ROC}
+>>>>>>> b6507f824cdb4451dd86e5d9e41b97b741a3627e
 
 \begin{slide}{Classificador - curva ROC}
 \begin{center}
